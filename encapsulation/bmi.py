@@ -19,17 +19,31 @@ BMI 지수에 따른 결과는 다음과 같다.
 홍길동 170 70 정상
 ***************************
 '''
+from unicodedata import category
+from unittest import result
+
+
 class Bmi(object):
-    def __init__(self, name, h, w):
+    def __init__(self,name, h, w):
         self.name = name
         self.h = h
         self.w = w
-    def bmi(self):
-        h = self.h
+        self.biman = ""
+
+    def execute(self):
+        self.biman = self.get_biman()
+        self.get_biman()
+        self.biman()
+
+    def get_bmi(self):
+        m = self.h/100
         w = self.w
-        m = h/100
-        ast = "*"*27
-        bmi = w/(m*m)
+        return w/m ** 2
+
+    def get_biman(self):
+        biman = ""
+        self.biman = biman
+        bmi = self.bmi()
         if bmi >= 35:
             biman = "고도 비만"
         elif bmi >= 30:
@@ -42,11 +56,19 @@ class Bmi(object):
             biman = "정상"
         else:
             biman = "저체중"
-        print(f'{ast} \n '이름', '키(cm)', '몸무게(kg)', '비만도' \n {ast} \n {naem}, {h}, {w}, {biman} \n {ast} ')
+
+    def biman(self):
+        title = "### 비만도 계산 ###"
+        tag = "이름 키(cm) 몸무게(kg) 비만도"
+        biman = self.biman
+        ast = "*"*30
+        result = f"{name} {h} {w} {biman}"
+        print(f'{title} \n {ast} \n {tag} \n {ast} \n {result} \n {ast}')
 
 if __name__=="__main__":
     name = input("이름 : ")
-    h = int(input("키 : "))
-    w = int(input("체중 : "))
-    bmi = Bmi()
-    bmi.bmi()
+    h = int(input("키(cm) : "))
+    w = int(input("체중(kg) : "))
+    bmi = Bmi(name, h, w)
+    bmi.execute()
+    
