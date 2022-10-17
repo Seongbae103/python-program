@@ -33,7 +33,7 @@ class Bmi(object):
     def execute(self):
         self.biman = self.get_biman()
         self.get_biman()
-        self.biman()
+        self.p_biman()
 
     def get_bmi(self):
         m = self.h/100
@@ -42,8 +42,7 @@ class Bmi(object):
 
     def get_biman(self):
         biman = ""
-        self.biman = biman
-        bmi = self.bmi()
+        bmi = self.get_bmi()
         if bmi >= 35:
             biman = "고도 비만"
         elif bmi >= 30:
@@ -56,8 +55,12 @@ class Bmi(object):
             biman = "정상"
         else:
             biman = "저체중"
+        self.biman = biman
 
-    def biman(self):
+    def p_biman(self):
+        name = self.name
+        h = self.h
+        w = self.w
         title = "### 비만도 계산 ###"
         tag = "이름 키(cm) 몸무게(kg) 비만도"
         biman = self.biman
