@@ -3,7 +3,7 @@ class Calculator(object):
         self.num1 = num1
         self.op = op
         self.num2 = num2
-    def calc(self):
+    def execute(self):
         num1 = self.num1
         op = self.op
         num2 = self.num2
@@ -21,9 +21,12 @@ class Calculator(object):
             print("잘못된 연산자")
             print(f'{num1} {op} {num2} = {result}')
 
-if __name__=="__main__":
-    num1 = int(input("숫자 : "))
-    op = input("+, -, *, /, % : ")
-    num2 = int(input("숫자 : "))
-    calculator = Calculator(num1, op, num2)    
-    calculator.calc()
+    @staticmethod
+    def main():
+        num1 = int(input("숫자 : "))
+        op = input("+, -, *, /, % : ")
+        num2 = int(input("숫자 : "))
+        calculator = Calculator(num1, op, num2)    
+        calculator.execute()
+
+Calculator.main()   

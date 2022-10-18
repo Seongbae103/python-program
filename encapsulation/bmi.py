@@ -33,7 +33,7 @@ class Bmi(object):
     def execute(self):
         self.biman = self.get_biman()
         self.get_biman()
-        self.p_biman()
+        self.print_biman()
 
     def get_bmi(self):
         m = self.h/100
@@ -57,7 +57,7 @@ class Bmi(object):
             biman = "저체중"
         self.biman = biman
 
-    def p_biman(self):
+    def print_biman(self):
         name = self.name
         h = self.h
         w = self.w
@@ -68,10 +68,12 @@ class Bmi(object):
         result = f"{name} {h} {w} {biman}"
         print(f'{title} \n {ast} \n {tag} \n {ast} \n {result} \n {ast}')
 
-if __name__=="__main__":
-    name = input("이름 : ")
-    h = int(input("키(cm) : "))
-    w = int(input("체중(kg) : "))
-    bmi = Bmi(name, h, w)
-    bmi.execute()
-    
+    @staticmethod
+    def main():
+        name = input("이름 : ")
+        h = int(input("키(cm) : "))
+        w = int(input("체중(kg) : "))
+        bmi = Bmi(name, h, w)
+        bmi.execute()
+Bmi.main()
+            
