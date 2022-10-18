@@ -22,32 +22,44 @@ class Person:
         self.gender = ""
 
     def gender_checker(self):
-        curren = 2022
         year = int(self.ssn[:2]) # 0:2는 출생년도 판별 인덱스
         gender_checker = int(self.ssn[7]) #7은 성별판별 인덱스
         if gender_checker == 1 or gender_checker == 2:
-            year += 1900
+            self.birth = (year + 1900)
             if gender_checker == 1:
                 self.gender = "남성"
             elif gender_checker == 2:
                 self.gender = "여성"
-        elif gender_checker == 3 or gender_checker ==4:
-            year += 2000
+        elif gender_checker == 3 or gender_checker == 4:
+            self.birth = (year + 2000)
             if gender_checker == 3:
                 self.gender = "남성"
             elif gender_checker == 4:
                 self.gender = "여성"
         else:
             self.gender = "잘못된 생년월일"
+
     def set_age(self):
-        pass
+        current = 2022
+        birth = self.birth
+        self.age = current - birth + 1
     
+    def print_person(self):
+        print( f"### 자기소개서 ###"
+            "\n ********************************"
+            "\n 이름 : {name}"
+            "\n 성별 : {self.gender}"
+            "\n 나이 : {self.age}"
+            "\n 주소 : {self.add}" 
+            |"\n ********************************")
     @staticmethod
     def main():
         name = input("이름 : ")
         ssn = input("주민번호 : ")
         person = Person(name, ssn)
-        
+        person.gender_checker()
+        person.set_age()
+        person.print_person()     
 Person.main()
 
      
