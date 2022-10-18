@@ -25,17 +25,17 @@ class Grade(object):
         self.grade = ""
         
     def execute(self):
-        self.grade = self.get_grade()
-        self.get_grade()
+        self.grade = self.set_grade()
+        self.set_grade()
         self.print_grade()
 
-    def get_avg(self):
+    def set_avg(self):
         self.total = self.ko + self.en + self.ma
         return self.total / 3
         
-    def get_grade(self):
+    def set_grade(self):
         grade = ""
-        avg = self.get_avg()
+        avg = self.set_avg()
         if avg >= 90:
             grade = "A학점"
         elif avg >= 80:
@@ -59,10 +59,11 @@ class Grade(object):
         en = self.en
         ma = self.ma
         total = self.total
-        avg = self.get_avg()
+        avg = self.set_avg()
         grade = self.grade
         end = f"{name} {ko} {en} {ma} {total} {avg} {grade}"
         print(f'{title} \n {ast} \n {tag} \n {ast} \n {end} \n {ast}')
+
               
     @staticmethod
     def main():
