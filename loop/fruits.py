@@ -8,11 +8,12 @@
  2번과일 : 사과
  3번과일 : 망고
 ********************************
+구매할 과일: 바
 """
 class Fruits:
-    def __init__(self) -> None:
+    def __init__(self,purchase) -> None:
         self.menu = ["바나나", "사과", "망고"]
-
+        self.purchase = purchase
     def menu(self):
         print("### 과일번호표 ###")
         print("********************************")
@@ -21,9 +22,11 @@ class Fruits:
            print(f"(j+1)번과일: {i}")
            j += 1
         print("********************************")
+        fw = self.purchase[:2] #구매할 과일 첫글자
 
     @staticmethod
     def main():
-        fruits = Fruits()
+        purchase = input("구매할 과일 : ")
+        fruits = Fruits(purchase)
         fruits.menu()
 Fruits.main()
