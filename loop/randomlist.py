@@ -14,8 +14,8 @@ class Randomlist(object):
     @staticmethod
     def main():
         rl = Randomlist()
-        rl.print()
-Randomlist.main()   '''
+        .print()
+OddEven.main()   '''
 if __name__=="__main__":
     rl = Randomlist()
     rl.print()

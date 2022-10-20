@@ -23,8 +23,8 @@ class Person:
         self.add = add
 
     def gender_checker(self):
-        year = int(self.ssn[:2]) # 0:2는 출생년도 판별 인덱스
-        gender_checker = int(self.ssn[7]) #7은 성별판별 인덱스
+        year = int(self.ssn[:2]) 
+        gender_checker = int(self.ssn[7]) 
         if gender_checker == 1 or gender_checker == 2:
             self.birth = year + 1900
             if gender_checker == 1:

@@ -22,8 +22,14 @@ class Fruits:
            print(f"(j+1)번과일: {i}")
            j += 1
         print("********************************")
-        fw = self.purchase[:2] #구매할 과일 첫글자
-
+        fw = self.purchase[:2] 
+        if fw == "바":
+            print({0})
+        if fw == "사":
+            print({1})
+        if fw == "망":
+            print({2})
+            
     @staticmethod
     def main():
         purchase = input("구매할 과일 : ")
