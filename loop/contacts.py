@@ -6,12 +6,10 @@ class Contact(object):
     def __init__(self, name, phone_num, e_mail, add) -> None:
         self.name = name
         self.phone_num = phone_num
-        self.e_mail = e_mail 
+        self.e_mail = e_mail
         self.add = add
 
-    def print(self):
-        print(f"이름 : {self.name} \n 연락처 : {self.phone_num} \n 이메일 : {self.e_mail} \n 주소 : {self.add}")    
-    
+
     @staticmethod
     def new_contact():
         name = input("이름 : ")
@@ -21,16 +19,17 @@ class Contact(object):
         return Contact(name, phone_num, e_mail, add)
 
     def print_info(self):
-        print(f"{self.name}")
-        print(f"{self.phone_num}")
-        print(f"{self.e_mail}") 
-        print(f"{self.add}")
+        print(f"이름 : {self.name}")
+        print(f"연락처 : {self.phone_num}")
+        print(f"이메일 : {self.e_mail}")
+        print(f"주소 : {self.add}")
+        print("*********************")
 
     @staticmethod
     def get_contacts(ls):
-        for i in ls:
-            i.print_info()
-    
+        [i.print_info() for i in ls]
+
+
     @staticmethod
     def print_menu():
         print("1. 연락처 등록")
@@ -41,9 +40,19 @@ class Contact(object):
         return int(menu)
 
     @staticmethod
+    def delete_contact(ls, name):
+        '''
+        for i, j in enumerate(ls):
+            if j.name == name:
+                del ls[i]
+        '''
+        del ls[[i for i,j in enumerate(ls) if j.name == name][0]]
+
+
+    @staticmethod
     def main():
         ls = []
-        while True:      
+        while True:
             menu = Contact.print_menu()
             if menu == 1:
                 print(" ### 연락처 등록 ### ")
@@ -54,7 +63,10 @@ class Contact(object):
                 Contact.get_contacts(ls)
             elif menu == 3:
                 print(" ### 연락처 삭제 ### ")
+                Contact.delete_contact(ls, input("삭제할 이름 : "))
             elif menu == 4:
                 print(" 주소록 어플을 종료합니다. ")
                 break
+            else: print("잘못된 입력입니다.")
+
 Contact.main()

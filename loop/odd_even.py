@@ -8,11 +8,7 @@ class OddEven(object):
     def print(self):
         rl = Randomlist()
         print(rl.get_random(10, 100, 10))
-        for i in rl.get_random(10, 100, 10):
-            if i % 2 == 0:
-                print(f"짝수 : {i}")
-            else:
-                print(f"홀수 : {i}")
+        print([f"even : {i}" if i % 2 ==0 else f"odd : {i}" for i in rl.get_random(10, 100, 10)])
 
     @staticmethod
     def main():

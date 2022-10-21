@@ -19,30 +19,21 @@ BMI 지수에 따른 결과는 다음과 같다.
 홍길동 170 70 정상
 ***************************
 '''
-from unicodedata import category
-from unittest import result
-
 
 class Bmi(object):
     def __init__(self,name, h, w):
         self.name = name
         self.h = h
         self.w = w
-        self.biman = ""
+        self.set_biman()
 
-    def execute(self):
-        self.biman = self.get_biman()
-        self.get_biman()
-        self.print_biman()
-
-    def get_bmi(self):
+    def set_bmi(self):
         m = self.h/100
         w = self.w
-        return w/m ** 2
+        return w/(m ** 2)
 
-    def get_biman(self):
-        biman = ""
-        bmi = self.get_bmi()
+    def set_biman(self):
+        bmi = self.set_bmi()
         if bmi >= 35:
             biman = "고도 비만"
         elif bmi >= 30:
@@ -58,22 +49,43 @@ class Bmi(object):
         self.biman = biman
 
     def print_biman(self):
-        name = self.name
-        h = self.h
-        w = self.w
-        title = "### 비만도 계산 ###"
-        tag = "이름 키(cm) 몸무게(kg) 비만도"
-        biman = self.biman
-        ast = "*"*30
-        result = f"{name} {h} {w} {biman}"
-        print(f'{title} \n {ast} \n {tag} \n {ast} \n {result} \n {ast}')
+        print(f"{self.name} {self.h} {self.w} {self.biman}")
+
+    @staticmethod
+    def print_menu():
+        print("1. 등록")
+        print("2. 출력")
+        print("3. 삭제")
+        return int(input("실행 : "))
+    @staticmethod
+    def new_user():
+        return Bmi(input("이름 : "),
+                   int(input("키 : ")),
+                   int(input("몸무게 : ")))
+    @staticmethod
+    def print_result(ls):
+        print("비만도 계산")
+        print("****************************")
+        print("이름 키(cm) 몸무게(kg) 비만도")
+        print("****************************")
+        for i in ls:
+            i.print_biman()
+        print("****************************")
 
     @staticmethod
     def main():
-        name = input("이름 : ")
-        h = int(input("키(cm) : "))
-        w = int(input("체중(kg) : "))
-        bmi = Bmi(name, h, w)
-        bmi.execute()
+        ls = []
+        while True:
+            menu = Bmi.print_menu()
+            if menu == 1:
+                print("### 비만도 등록 ###")
+                ls.append(Bmi.new_user())
+            elif menu == 2:
+                print("### 비만도 출력 ###")
+                print(Bmi.print_result(ls))
+            else:
+                print("### 비만도 삭제 ###")
+                ls.remove(Bmi.new_user(ls))
+                break
 Bmi.main()
             

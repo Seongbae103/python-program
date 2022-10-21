@@ -28,22 +28,21 @@ class Grade(object):
     def set_grade(self):
         avg = self.avg
         if avg >= 90:
-            self.grade = "A"
+            grade = "A"
         elif avg >= 80:
-            self.grade = "B"
+            grade = "B"
         elif avg >= 70:
-            self.grade = "C"
+            grade = "C"
         elif avg >= 60:
-            self.grade = "D"
+            grade = "D"
         elif avg >= 50:
-            self.grade = "E"
+            grade = "E"
         else:
-            self.grade = "F"
-        grade = self.grade
-        return grade
+            grade = "F"
+        self.grade = grade
 
     def print_grade(self):
-        print("{self.name} {self.ko} {self.en} {self.ma} {self.total} {self.avg} {self.grade}")
+        print(f"{self.name} {self.ko} {self.en} {self.ma} {self.total} {self.avg} {self.grade}")
 
     @staticmethod
     def new_grade():
@@ -64,11 +63,11 @@ class Grade(object):
 
     @staticmethod
     def print_menu():
-        print("1. 성적등록")
-        print("2. 성적출력")
-        print("3. 성적삭제")
+        print("1. 성적 등록")
+        print("2. 성적 출력")
+        print("3. 성적 삭제")
         print("4. 종료")
-        return print("메뉴선택")
+        return int(input("메뉴 선택 : "))
 
     @staticmethod
     def main():
@@ -76,16 +75,15 @@ class Grade(object):
         while True:
             menu = Grade.print_menu()
             if menu == 1:
-                print("### 성적등록 ###")
+                print("### 성적 등록 ###")
                 ls.append(Grade.new_grade())
             elif menu == 2:
-                print("### 성적출력 ###")
-                Grade.print_grade(ls)
+                print("### 성적 출력 ###")
+                Grade.print_table(ls)
             elif menu == 3:
-                print("### 성적삭제 ###")
+                print("### 성적 삭제 ###")
             elif menu == 4:
-                print("###종료###")
+                print("### 종료 ###")
                 break
-            grade = Grade("", 0, 0, 0)
-            grade.print_table()
+
 Grade.main()
